@@ -1,7 +1,9 @@
 package szp.com.yjtdoctordesktop;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import cn.bmob.v3.Bmob;
 
@@ -24,20 +26,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        // 设置状态栏
-        setStatusBar();
+        hideNavigationBar(false);
     }
 
     /**
-     *  设置状态栏
+     * 隐藏虚拟按键，并且全屏
      */
-    private void setStatusBar() {
-        // 设置状态栏颜色
-        //int color = getResources().getColor(R.color.colorPrimary);
-        //StatusBarUtil.setColor(MainActivity.this, color);
-        // 设置状态栏全透明
-        //StatusBarUtil.setTransparent(MainActivity.this);
-        // 设置状态栏半透明
-        //StatusBarUtil.setTranslucent(MainActivity.this, 5);
+    protected void hideNavigationBar(boolean fullScreen){
+        //隐藏虚拟按键，并且全屏
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+            View v = this.getWindow().getDecorView();
+            v.setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            //for new api versions.
+            View decorView = getWindow().getDecorView();
+            int uiOptions;
+
+            if (fullScreen) {
+                uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN;
+            } else {
+                uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            }
+
+            decorView.setSystemUiVisibility(uiOptions);
+        }
     }
 }
