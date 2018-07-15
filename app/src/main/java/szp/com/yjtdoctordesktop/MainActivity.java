@@ -6,18 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import cn.bmob.v3.Bmob;
+import szp.com.yjtdoctordesktop.common.Setting;
 
 /**
  * 主界面
  */
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_KEY = "ac789cf30663c1b23a509bdf97d0135e";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Bmob.initialize(this, APP_KEY);
+        Bmob.initialize(this, Setting.BMOB_APP_KEY);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
