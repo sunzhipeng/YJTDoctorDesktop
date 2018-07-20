@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import cn.bmob.v3.Bmob;
-import szp.com.yjtdoctordesktop.common.Setting;
+import szp.com.yjtdoctordesktop.utils.StaticClass;
 
 /**
  * 主界面
@@ -15,13 +15,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Bmob.initialize(this, Setting.BMOB_APP_KEY);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initData();
         initView();
+    }
+
+    private void initData() {
+
     }
 
     private void initView() {
