@@ -1,17 +1,15 @@
 package szp.com.yjtdoctordesktop;
 
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import cn.bmob.v3.Bmob;
-import szp.com.yjtdoctordesktop.utils.StaticClass;
+import szp.com.yjtdoctordesktop.ui.BaseActivity;
 
 /**
  * 主界面
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
